@@ -2,32 +2,21 @@
 
 {% block content %}
 <section class="sport-page">
-  <h2>{{ sport.name }} Clubs</h2>
+  <h2>{{ sport_name }} Clubs</h2>
 
-  {% if sport.clubs %}
+  {% if clubs %}
     <div class="club-list">
-      {% for club in sport.clubs %}
+      {% for club in clubs %}
         <div class="club-card">
           <h3>{{ club.name }}</h3>
           <p><strong>Area:</strong> {{ club.area }}</p>
           <p>{{ club.description }}</p>
-          {% if club.beginner %}
+
+          {% if club.beginner_friendly %}
             <span class="tag beginner">Beginner Friendly</span>
           {% endif %}
 
-          {% if club.events %}
-            <div class="event-section">
-              <h4>Upcoming Events:</h4>
-              {% for event in club.events %}
-                <div class="event-card">
-                  <p><strong>📅 Date:</strong> {{ event.date }}</p>
-                  <p><strong>📍 Location:</strong> {{ event.location }}</p>
-                  <p><strong>💸 Cost:</strong> ₹{{ event.cost }}</p>
-                  <p><strong>👥 Registered:</strong> {{ event.registered }}/{{ event.capacity }}</p>
-                </div>
-              {% endfor %}
-            </div>
-          {% endif %}
+          <a href="{{ url_for('view_club', club_id=club.id) }}" class="view-btn">View Details</a>
         </div>
       {% endfor %}
     </div>

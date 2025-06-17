@@ -1,0 +1,14 @@
+# Ignore environment variables
+.env
+
+# Bytecode and cache files
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env/  # In case the virtual env is named ".env"
+
+# OS-specific
+.DS_Store  # macOS
+Thumbs.db  # Windows

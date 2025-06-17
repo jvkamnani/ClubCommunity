@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="club-container">
+    <h2>{{ club.name }}</h2>
+    <p><strong>Area:</strong> {{ club.area }}</p>
+    {% if club.beginner_friendly %}
+      <span class="tag">Beginner Friendly</span>
+    {% endif %}
+  
+    <h3>Club Details:</h3>
+    <!-- Insert sport-specific info here -->
+    <p>{{ club.description }}</p>
+  
+    {% if events %}
+      <div class="event-section">
+        <h3>Upcoming Events</h3>
+        {% for event in events %}
+          <div class="event-card">
+            <p><strong>📅 Date:</strong> {{ event.event_date }}</p>
+            <p><strong>📍 Location:</strong> {{ event.location }}</p>
+            <p><strong>💸 Cost:</strong> ₹{{ event.cost }}</p>
+            <p><strong>👥 Registered:</strong> {{ event.registered_count }}/{{ event.max_capacity }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  {% endblock %}

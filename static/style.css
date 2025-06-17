@@ -205,4 +205,72 @@ body {
   border-radius: 4px;
 }
 
+/* ----- Club Detail Layout ----- */
+.club-container {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.club-container h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.club-container p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* ----- Tag (e.g., Beginner Friendly) ----- */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  background-color: #e0f7e9;
+  color: #1b8c3e;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+/* ----- Event Section ----- */
+.event-section {
+  margin-top: 32px;
+}
+
+.event-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+/* ----- Event Card Styling ----- */
+.event-card {
+  background-color: #f9f9f9;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-left: 4px solid #0077cc;
+  border-radius: 4px;
+}
+
+.event-card p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+}
+
+✅ Optional: Use the Class in Your Template
+
+Make sure your club_detail.html is using the .club-container class, e.g.:
+
+<div cla
+
+
+
   
