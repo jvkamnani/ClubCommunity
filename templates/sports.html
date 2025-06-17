@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="sports-selection">
+  <h2>🏅 Choose a Sport</h2>
+  <div class="sports-grid">
+    {% for sport in sports %}
+      <div class="sport-card" onclick="window.location.href='/sports/{{ sport.slug }}'">
+        <img src="{{ url_for('static', filename='images/sportLogos/' + sport.image) }}" alt="{{ sport.name }} icon">
+        <p>{{ sport.name }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

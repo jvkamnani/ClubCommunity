@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+  <section class="gallery">
+    <div class="image-container">
+      <img src="{{ url_for('static', filename='images/kanteerva-run.jpg') }}" alt="Runners at Kanteerva Stadium" />
+      <p>Kanteerva Stadium</p>
+    </div>
+    <div class="image-container">
+      <img src="{{ url_for('static', filename='images/Lalbagh-Botanical-Garden.jpg') }}" alt="Lalbagh Botanical Garden" />
+      <p>Lalbagh Botanical Garden</p>
+    </div>
+    <div class="image-container">
+      <img src="{{ url_for('static', filename='images/jakkur-lake.jpg') }}" alt="Route at Jakkur Lake" />
+      <p>Jakkur Lake</p>
+    </div>
+    <div class="image-container">
+      <img src="{{ url_for('static', filename='images/cubbon-park.jpeg') }}" alt="Running at Cubbon Park" />
+      <p>Cubbon Park</p>
+    </div>
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/road-running.png') }}" alt="Running on the Road" />
+        <p>Road Running</p>
+      </div>
+  </section>
+
+  <div class="cta">
+    <button onclick="window.location.href='clubs-bangalore.html'">
+      🔍 Find Clubs in Bangalore
+    </button>
+  </div>
+
+  {% endblock %}
