@@ -26,7 +26,7 @@ def get_sports():
     sports = get_sports_service()
     return jsonify([model_to_dict(s) for s in sports])
 
-@sport_bp.route('/sports/<int:sport_id>', methods=['GET'])
+@sport_bp.route('/sports/<uuid:sport_id>', methods=['GET'])
 def get_sport(sport_id):
     sport = get_sport_service(sport_id)
     return jsonify(model_to_dict(sport))
@@ -38,7 +38,7 @@ def get_sport_image(sport_id):
         return send_file(io.BytesIO(sport.image), mimetype='image/jpeg')
     return '', 404
 
-@sport_bp.route('/sports/<int:sport_id>', methods=['PUT'])
+@sport_bp.route('/sports/<uuid:sport_id>', methods=['PUT'])
 def update_sport(sport_id):
     name = request.form.get('name')
     image = request.files.get('image')
@@ -46,7 +46,7 @@ def update_sport(sport_id):
     sport = update_sport_service(sport_id, name=name, image=image_data)
     return jsonify(model_to_dict(sport))
 
-@sport_bp.route('/sports/<int:sport_id>', methods=['DELETE'])
+@sport_bp.route('/sports/<uuid:sport_id>', methods=['DELETE'])
 def delete_sport(sport_id):
     delete_sport_service(sport_id)
     return '', 204 
