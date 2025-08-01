@@ -1,0 +1,34 @@
+{
+  "text": {
+    "label": "Text",
+    "description": "A single-line text input field."
+  },
+  "textarea": {
+    "label": "Textarea",
+    "description": "A multi-line text input field."
+  },
+  "number": {
+    "label": "Number",
+    "description": "A numeric input field."
+  },
+  "email": {
+    "label": "Email",
+    "description": "An input field for email addresses."
+  },
+  "date": {
+    "label": "Date",
+    "description": "A date picker input field."
+  },
+  "select": {
+    "label": "Select",
+    "description": "A dropdown select field."
+  },
+  "checkbox": {
+    "label": "Checkbox",
+    "description": "A single checkbox field."
+  },
+  "radio": {
+    "label": "Radio",
+    "description": "A set of radio button options."
+  }
+} 

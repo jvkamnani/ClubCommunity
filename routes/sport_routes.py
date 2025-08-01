@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, send_file, url_for
 from services import *
+from services.utils.field_utils import validate_required_fields
 from models import Sport
 import io
 
@@ -17,6 +18,11 @@ sport_bp = Blueprint('sport_bp', __name__)
 def create_sport():
     name = request.form.get('name')
     image = request.files.get('image')
+    required_fields = ['name']
+    data = {'name': name}
+    missing_fields = validate_required_fields(data, required_fields)
+    if missing_fields:
+        return jsonify({'error': f"Missing or null fields: {', '.join(missing_fields)}"}), 400
     image_data = image.read() if image else None
     sport = create_sport_service(name=name, image=image_data)
     return jsonify(model_to_dict(sport)), 201
@@ -38,10 +44,25 @@ def get_sport_image(sport_id):
         return send_file(io.BytesIO(sport.image), mimetype='image/jpeg')
     return '', 404
 
+@sport_bp.route('/sports/id_from_name', methods=['GET'])
+def get_sport_id_from_name():
+    name = request.args.get('sport_name')
+    if not name:
+        return jsonify({'error': 'Missing required parameter: name'}), 400
+    sport = get_sport_by_name_service(name)
+    if not sport:
+        return jsonify({'error': 'Sport not found'}), 404
+    return jsonify({'sport_id': str(sport.id)})
+
 @sport_bp.route('/sports/<uuid:sport_id>', methods=['PUT'])
 def update_sport(sport_id):
     name = request.form.get('name')
     image = request.files.get('image')
+    required_fields = ['name']
+    data = {'name': name}
+    missing_fields = validate_required_fields(data, required_fields)
+    if missing_fields:
+        return jsonify({'error': f"Missing or null fields: {', '.join(missing_fields)}"}), 400
     image_data = image.read() if image else None
     sport = update_sport_service(sport_id, name=name, image=image_data)
     return jsonify(model_to_dict(sport))

@@ -7,9 +7,13 @@ from routes.user_routes import user_bp
 from routes.club_routes import club_bp
 from routes.event_routes import event_bp
 from routes.sport_routes import sport_bp
+from routes.form_template_routes import form_template_bp
+from flask_cors import CORS
 
 app = Flask(__name__)
 load_dotenv()
+
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}}, allow_headers="*", methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
 MYSQL_USER = os.getenv('MYSQL_USER')
 MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
@@ -28,6 +32,8 @@ app.register_blueprint(user_bp)
 app.register_blueprint(club_bp)
 app.register_blueprint(event_bp)
 app.register_blueprint(sport_bp)
+app.register_blueprint(form_template_bp)
+CORS(app, origins=["http://localhost:5173"], supports_credentials=True)
 
 if __name__ == '__main__':
     with app.app_context():

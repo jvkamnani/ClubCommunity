@@ -9,6 +9,9 @@ def create_event_service(name, date=None, club_id=None):
 def get_events_service():
     return Event.query.all()
 
+def get_events_by_club_service(club_id):
+    return Event.query.filter_by(club_id=club_id).all()
+
 def get_event_service(event_id):
     return Event.query.get_or_404(event_id)
 
